@@ -3,11 +3,12 @@
 class AVL : virtual public ITree
 {
 public:
-	AVL(long long value);
+	AVL(T value);
 	AVL();
 	virtual ~AVL();
 	virtual ITree* insert(T value);
 	virtual ITree* erase(T value);
+	virtual bool find(T value);
 private:
 	char height_;
 	long long value_;
@@ -23,5 +24,6 @@ private:
 	friend void insert_(AVL*& t, T value);
 	friend void erase_(AVL*& t, T value);
 	friend void erase_mr(AVL*& t, T& value);
+	friend bool find_(AVL*& t, T value);
 };
 

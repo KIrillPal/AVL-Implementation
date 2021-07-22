@@ -35,7 +35,15 @@ ITree* AVL::erase(T value)
 {
 	auto p = this;
 	erase_(p, value);
+	if (p == nullptr)
+		p = new AVL();
 	return p;
+}
+
+bool AVL::find(T value)
+{
+	auto p = this;
+	return find_(p, value);;
 }
 
 char height(AVL* t)
@@ -144,4 +152,14 @@ void erase_mr(AVL*& t, T& value)
 		delete t, t = nullptr;
 	}
 	if (t) balance(t);
+}
+
+bool find_(AVL*& t, T value)
+{
+	if (!t || isempty(t)) return false;
+	if (t->value_ > value)
+		return find_(t->L_, value);
+	else if (t->value_ < value)
+		return find_(t->R_, value);
+	return true;
 }

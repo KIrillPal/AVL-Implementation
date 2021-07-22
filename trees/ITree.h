@@ -9,5 +9,6 @@ public:
 	virtual ~ITree();
 	virtual ITree* insert(T value) = 0;
 	virtual ITree* erase(T value) = 0;
+	virtual bool find(T value) = 0;
 };
 
